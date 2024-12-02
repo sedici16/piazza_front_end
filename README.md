@@ -1,70 +1,43 @@
-# Piazza Social Network Front End in REACT
+# React Application: Blog Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a **React** application for managing blog posts with features like user registration, dashboards, post creation, and analytics. The app is structured using **React Router** for navigation and supports dynamic routes for topic-based post filtering.
 
-## Available Scripts
+## Key Features
+- **User Registration**: Registration form for new users (`/register`).
+- **Dashboard**: User dashboard summarizing blog activities (`/dashboard`).
+- **All Posts**: View all published blog posts (`/all-posts`).
+- **Expired Posts History**: Track posts that are no longer active (`/expired-posts-history`).
+- **Most Liked Posts**: Display posts with the highest likes (`/most-liked-posts`).
+- **Posts by Topic**: Filter and display posts by topic (`/posts-by-topic/:topic`).
+- **Create Post**: Form for adding new blog posts (`/create-post`).
 
-In the project directory, you can run:
+## Code Snippet
+```javascript
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
+import AllPosts from './components/AllPosts';
+import ExpiredPostsHistory from './components/ExpiredPostsHistory';
+import MostLikedPosts from './components/MostLikedPosts';
+import PostsByTopic from './components/PostByTopics';
+import CreatePost from './components/CreatePost';
 
-### `npm start`
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/register" />} /> {/* Redirect to /register */}
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/all-posts" element={<AllPosts />} />
+        <Route path="/expired-posts-history" element={<ExpiredPostsHistory />} />
+        <Route path="/most-liked-posts" element={<MostLikedPosts />} />
+        <Route path="/posts-by-topic/:topic" element={<PostsByTopic />} />
+        <Route path="/create-post" element={<CreatePost />} />
+      </Routes>
+    </Router>
+  );
+}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default App;
